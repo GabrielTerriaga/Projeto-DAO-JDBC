@@ -136,7 +136,6 @@ public class SellerDaoJDBC implements SellerDao {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
-
 	}
 
 	private Seller instantiateSeller(ResultSet rs, Department dep) throws SQLException {
@@ -167,8 +166,10 @@ public class SellerDaoJDBC implements SellerDao {
 		ResultSet rs = null; // trazendo os dados do DB
 		try {
 			st = conn.prepareStatement(
-					"SELECT seller.*,department.Name as DepName " + "FROM seller INNER JOIN department "
-							+ "ON seller.DepartmentId = department.Id " + "ORDER BY Name");
+					"SELECT seller.*,department.Name as DepName " 
+							+ "FROM seller INNER JOIN department "
+							+ "ON seller.DepartmentId = department.Id " 
+							+ "ORDER BY Name");
 
 			rs = st.executeQuery(); // resultSet recebe a Query que foi enviado e executado no DB
 			// testar se a consulta trouxe alguma coisa e transformar de table para obj na
